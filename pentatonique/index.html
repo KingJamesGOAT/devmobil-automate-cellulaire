@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pentatonique tactile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #10141e;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+    }
+    .bands {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      gap: 2px;
+      padding: 0 1px;
+    }
+    .bands > div {
+      flex: 1;
+      background: oklch(66% 0.12 var(--hue));
+    }
+    canvas {
+      position: fixed;
+      inset: 0;
+      display: block;
+      width: 100dvw;
+      height: 100dvh;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-back {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 10;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      backdrop-filter: blur(4px);
+    }
+    .nav-back:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="nav-back">Retour au menu</a>
+
+  <div class="bands">
+    <div style="--hue: 25"></div>
+    <div style="--hue: 80"></div>
+    <div style="--hue: 165"></div>
+    <div style="--hue: 245"></div>
+    <div style="--hue: 305"></div>
+  </div>
+
+  <canvas></canvas>
+
+  <script src="https://g200kg.github.io/webaudio-tinysynth/webaudio-tinysynth.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

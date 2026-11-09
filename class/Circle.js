@@ -1,11 +1,12 @@
 import Vector2 from './Vector2.js';
 
 export default class Circle {
-  constructor(x, y, radius, color = '#38bdf8') {
+  constructor(x, y, radius, color = '#38bdf8', opacity = 1) {
     this.position = new Vector2(x, y);
     this.velocity = new Vector2(0, 0);
     this.radius = radius;
     this.color = color;
+    this.opacity = opacity;
     this.speed = 0.3;
   }
 
@@ -36,10 +37,13 @@ export default class Circle {
   }
 
   draw(ctx) {
+    ctx.save();
+    ctx.globalAlpha = this.opacity;
     ctx.beginPath();
     ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.closePath();
+    ctx.restore();
   }
 }

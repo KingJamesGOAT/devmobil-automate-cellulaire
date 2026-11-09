@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Application temps reel de demande de parole avec WebSockets et WsMini">
+  <title>Demande de parole - WebSocket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-top">
+        <h1>Demande de parole</h1>
+        <div id="connection-badge" class="badge badge-disconnected">Deconnecte</div>
+      </div>
+      <p class="subtitle">Gestion collaborative de prise de parole synchronisee en temps reel</p>
+    </header>
+
+    <main class="main-content">
+      <!-- Fiche d identite du participant -->
+      <section class="card identity-card">
+        <h2>Votre session</h2>
+        <p>Identifiant : <span id="client-id" class="code-pill">Connexion en cours...</span></p>
+        <p id="user-role-text" class="status-indicator">En attente de connexion...</p>
+      </section>
+
+      <!-- Panneau de la parole actuelle -->
+      <section class="card speaker-card">
+        <h2>Prise de parole actuelle</h2>
+        <div id="speaker-display" class="speaker-status free">
+          La parole est libre.
+        </div>
+      </section>
+
+      <!-- File d attente -->
+      <section class="card queue-card">
+        <h2>File d attente (<span id="queue-count">0</span>)</h2>
+        <ol id="queue-list" class="queue-list">
+          <li class="empty-state">Aucun participant en attente.</li>
+        </ol>
+      </section>
+
+      <!-- Zone d actions et retours serveur -->
+      <section class="card actions-card">
+        <button id="action-btn" class="btn btn-primary" disabled>
+          Chargement...
+        </button>
+        <p id="feedback-msg" class="feedback"></p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="client.js"></script>
+</body>
+</html>
